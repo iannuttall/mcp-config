@@ -2,6 +2,8 @@
 
 Turn one MCP server setup into the right format for lots of apps.
 
+![Demo](demo.svg)
+
 - Keep one setup
 - Get the right file or command for each app
 - Skip hand edits across many formats

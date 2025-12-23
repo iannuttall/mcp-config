@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 340">
+  <style>
+    @keyframes show1 { 0%, 20% { opacity: 1; } 20.01%, 100% { opacity: 0; } }
+    @keyframes show2 { 0%, 20% { opacity: 0; } 20.01%, 40% { opacity: 1; } 40.01%, 100% { opacity: 0; } }
+    @keyframes show3 { 0%, 40% { opacity: 0; } 40.01%, 60% { opacity: 1; } 60.01%, 100% { opacity: 0; } }
+    @keyframes show4 { 0%, 60% { opacity: 0; } 60.01%, 80% { opacity: 1; } 80.01%, 100% { opacity: 0; } }
+    @keyframes show5 { 0%, 80% { opacity: 0; } 80.01%, 100% { opacity: 1; } }
+
+    .output-1 { opacity: 0; animation: show1 15s infinite; }
+    .output-2 { opacity: 0; animation: show2 15s infinite; }
+    .output-3 { opacity: 0; animation: show3 15s infinite; }
+    .output-4 { opacity: 0; animation: show4 15s infinite; }
+    .output-5 { opacity: 0; animation: show5 15s infinite; }
+
+    .bg { fill: #0d1117; }
+    .border { fill: none; stroke: #30363d; stroke-width: 1; }
+    .title { fill: #8b949e; font-family: ui-monospace, monospace; font-size: 11px; }
+    .code { fill: #e6edf3; font-family: ui-monospace, monospace; font-size: 11px; }
+    .key { fill: #ff7b72; }
+    .string { fill: #a5d6ff; }
+    .comment { fill: #8b949e; }
+    .arrow { fill: #8b949e; }
+    .client-name { fill: #7ee787; font-family: ui-monospace, monospace; font-size: 12px; font-weight: bold; }
+  </style>
+
+  <!-- Background -->
+  <rect class="bg" width="820" height="340"/>
+
+  <!-- Input box -->
+  <rect class="border" x="20" y="40" width="280" height="260"/>
+  <text class="title" x="30" y="30">Input</text>
+
+  <!-- Input code -->
+  <text class="code" x="30" y="65">{</text>
+  <text class="code" x="45" y="85"><tspan class="key">name</tspan>: <tspan class="string">"playbooks"</tspan>,</text>
+  <text class="code" x="45" y="105"><tspan class="key">type</tspan>: <tspan class="string">"http"</tspan>,</text>
+  <text class="code" x="45" y="125"><tspan class="key">url</tspan>: <tspan class="string">"https://playbooks.com</tspan></text>
+  <text class="code" x="60" y="145"><tspan class="string">/api/mcp"</tspan>,</text>
+  <text class="code" x="45" y="165"><tspan class="key">headers</tspan>: {</text>
+  <text class="code" x="60" y="185"><tspan class="key">Authorization</tspan>:</text>
+  <text class="code" x="75" y="205"><tspan class="string">"Bearer YOUR_API_KEY"</tspan></text>
+  <text class="code" x="45" y="225">}</text>
+  <text class="code" x="30" y="245">}</text>
+
+  <!-- Arrow -->
+  <text class="arrow" x="320" y="175" font-size="24">→</text>
+
+  <!-- Output box -->
+  <rect class="border" x="360" y="40" width="440" height="260"/>
+  <text class="title" x="370" y="30">Output</text>
+
+  <!-- Claude Code (CLI) -->
+  <g class="output-1">
+    <text class="client-name" x="375" y="65">Claude Code</text>
+    <text class="code comment" x="375" y="90"># CLI command</text>
+    <text class="code" x="375" y="115">claude mcp add \</text>
+    <text class="code" x="390" y="135">--transport http \</text>
+    <text class="code" x="390" y="155">playbooks \</text>
+    <text class="code" x="390" y="175"><tspan class="string">https://playbooks.com/api/mcp</tspan> \</text>
+    <text class="code" x="390" y="195">--header <tspan class="string">"Authorization:</tspan></text>
+    <text class="code" x="405" y="215"><tspan class="string">Bearer YOUR_API_KEY"</tspan></text>
+  </g>
+
+  <!-- OpenAI Codex (TOML) -->
+  <g class="output-2">
+    <text class="client-name" x="375" y="65">OpenAI Codex CLI</text>
+    <text class="code comment" x="375" y="90"># config.toml</text>
+    <text class="code" x="375" y="115">[<tspan class="key">mcp_servers.playbooks</tspan>]</text>
+    <text class="code" x="375" y="140"><tspan class="key">url</tspan> = <tspan class="string">"https://playbooks.com/api/mcp"</tspan></text>
+    <text class="code" x="375" y="165"><tspan class="key">http_headers</tspan> = {</text>
+    <text class="code" x="390" y="190"><tspan class="string">"Authorization"</tspan> = <tspan class="string">"Bearer YOUR_API_KEY"</tspan></text>
+    <text class="code" x="375" y="215">}</text>
+  </g>
+
+  <!-- Factory / Droid (CLI) -->
+  <g class="output-3">
+    <text class="client-name" x="375" y="65">Factory (Droid)</text>
+    <text class="code comment" x="375" y="90"># CLI command</text>
+    <text class="code" x="375" y="115">droid mcp add \</text>
+    <text class="code" x="390" y="135">playbooks \</text>
+    <text class="code" x="390" y="155"><tspan class="string">https://playbooks.com/api/mcp</tspan> \</text>
+    <text class="code" x="390" y="175">--type http \</text>
+    <text class="code" x="390" y="195">--header <tspan class="string">"Authorization:</tspan></text>
+    <text class="code" x="405" y="215"><tspan class="string">Bearer YOUR_API_KEY"</tspan></text>
+  </g>
+
+  <!-- Cursor (JSON) -->
+  <g class="output-4">
+    <text class="client-name" x="375" y="65">Cursor</text>
+    <text class="code comment" x="375" y="90"># mcp.json</text>
+    <text class="code" x="375" y="115">{</text>
+    <text class="code" x="390" y="135"><tspan class="key">"mcpServers"</tspan>: {</text>
+    <text class="code" x="405" y="155"><tspan class="key">"playbooks"</tspan>: {</text>
+    <text class="code" x="420" y="175"><tspan class="key">"url"</tspan>: <tspan class="string">"https://playbooks.com/api/mcp"</tspan>,</text>
+    <text class="code" x="420" y="195"><tspan class="key">"headers"</tspan>: { <tspan class="key">"Authorization"</tspan>: <tspan class="string">"..."</tspan> }</text>
+    <text class="code" x="405" y="215">}</text>
+    <text class="code" x="390" y="235">}</text>
+    <text class="code" x="375" y="255">}</text>
+  </g>
+
+  <!-- Claude Desktop (JSON) -->
+  <g class="output-5">
+    <text class="client-name" x="375" y="65">Claude Desktop</text>
+    <text class="code comment" x="375" y="90"># claude_desktop_config.json</text>
+    <text class="code" x="375" y="115">{</text>
+    <text class="code" x="390" y="135"><tspan class="key">"mcpServers"</tspan>: {</text>
+    <text class="code" x="405" y="155"><tspan class="key">"playbooks"</tspan>: {</text>
+    <text class="code" x="420" y="175"><tspan class="key">"url"</tspan>: <tspan class="string">"https://playbooks.com/api/mcp"</tspan>,</text>
+    <text class="code" x="420" y="195"><tspan class="key">"headers"</tspan>: { <tspan class="key">"Authorization"</tspan>: <tspan class="string">"..."</tspan> }</text>
+    <text class="code" x="405" y="215">}</text>
+    <text class="code" x="390" y="235">}</text>
+    <text class="code" x="375" y="255">}</text>
+  </g>
+</svg>
