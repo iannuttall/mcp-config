@@ -1,0 +1,12 @@
+{
+  "name": "mcp-config",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun run tsc",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
