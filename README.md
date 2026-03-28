@@ -36,6 +36,21 @@ const stdioServer = {
   env: { API_KEY: "secret" },
 };
 
+const wrappedStdioServer = {
+  name: "filesystem-safe",
+  type: "stdio",
+  command: "npx",
+  args: [
+    "-y",
+    "mcp-transport-firewall",
+    "--",
+    "npx",
+    "-y",
+    "@modelcontextprotocol/server-filesystem",
+    "/path/to/dir",
+  ],
+};
+
 // Make JSON for Cursor
 const result = transformConfig({
   server: httpServer,
@@ -62,6 +77,14 @@ const cliResult = transformConfig({
 
 console.log(cliResult.config);
 // => claude mcp add my-server -- npx -y @example/mcp-server
+
+const wrappedCliResult = transformConfig({
+  server: wrappedStdioServer,
+  client: "claude-code",
+});
+
+console.log(wrappedCliResult.config);
+// => claude mcp add filesystem-safe -- npx -y mcp-transport-firewall -- npx -y @modelcontextprotocol/server-filesystem /path/to/dir
 ```
 
 ## Running tests
